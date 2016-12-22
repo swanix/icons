@@ -22,6 +22,7 @@
   "homepage": "https://github.com/acuariux/swan-icons#readme",
   "devDependencies": {
     "gulp": "3.9.1",
+    "gulp-plumber": "1.1.0",
     "gulp-svg-sprite": "1.3.6"
   }
 }

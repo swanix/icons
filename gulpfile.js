@@ -7,6 +7,7 @@
 'use strict';
 
 var gulp = require('gulp' ),
+    plumber = require('gulp-plumber'),
     svgSprite = require('gulp-svg-sprite');
 
 //-----------------------------------------------------
@@ -47,5 +48,6 @@ gulp.task('svg', function() {
     return gulp
       .src(inputSvg)
       .pipe(svgSprite(configSvg))
+      .pipe(plumber())
       .pipe(gulp.dest(outputSvg));
 });
