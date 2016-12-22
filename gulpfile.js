@@ -17,6 +17,28 @@ var gulp = require('gulp' ),
 var inputSvg = 'src/*.svg';
 var outputSvg = 'dist/';
 
+// SVG configuration
+var  configSvg               = {
+      shape               : {
+          dimension       : {         
+              maxWidth    : 32,
+              maxHeight   : 32
+          },
+          spacing         : {         
+              padding     : 10
+          },
+      },
+      mode                : {
+          view            : {        
+              bust        : false,
+              render      : {
+                  css    : true      
+              }
+          },
+          symbol          : true     
+      }
+};
+
 //-----------------------------------------------------
 // SVG task
 //-----------------------------------------------------
@@ -24,6 +46,6 @@ var outputSvg = 'dist/';
 gulp.task('svg', function() {
     return gulp
       .src(inputSvg)
-      .pipe(svgSprite( /* configuration here */ ))
+      .pipe(svgSprite(configSvg))
       .pipe(gulp.dest(outputSvg));
 });
