@@ -8,7 +8,7 @@
 }
 
 .svg-arrow-right {
-	background: url("svg/sprite.view.svg") 75% 0 no-repeat;
+	background: url("svg/sprite.view.svg") 75% 33.333333333333336% no-repeat;
 }
 
 .svg-arrow-right-dims {
@@ -52,8 +52,17 @@
 	height: 52px;
 }
 
-.svg-menu {
+.svg-markup {
 	background: url("svg/sprite.view.svg") 0 66.66666666666667% no-repeat;
+}
+
+.svg-markup-dims {
+	width: 52px;
+	height: 52px;
+}
+
+.svg-menu {
+	background: url("svg/sprite.view.svg") 25% 66.66666666666667% no-repeat;
 }
 
 .svg-menu-dims {
@@ -62,7 +71,7 @@
 }
 
 .svg-minus {
-	background: url("svg/sprite.view.svg") 25% 66.66666666666667% no-repeat;
+	background: url("svg/sprite.view.svg") 50% 66.66666666666667% no-repeat;
 }
 
 .svg-minus-dims {
@@ -71,7 +80,7 @@
 }
 
 .svg-plus {
-	background: url("svg/sprite.view.svg") 50% 66.66666666666667% no-repeat;
+	background: url("svg/sprite.view.svg") 75% 0 no-repeat;
 }
 
 .svg-plus-dims {
@@ -89,7 +98,7 @@
 }
 
 .svg-settings {
-	background: url("svg/sprite.view.svg") 75% 33.333333333333336% no-repeat;
+	background: url("svg/sprite.view.svg") 75% 66.66666666666667% no-repeat;
 }
 
 .svg-settings-dims {
@@ -98,7 +107,7 @@
 }
 
 .svg-social-dribbble {
-	background: url("svg/sprite.view.svg") 75% 66.66666666666667% no-repeat;
+	background: url("svg/sprite.view.svg") 0 100% no-repeat;
 }
 
 .svg-social-dribbble-dims {
@@ -107,7 +116,7 @@
 }
 
 .svg-social-facebook {
-	background: url("svg/sprite.view.svg") 0 100% no-repeat;
+	background: url("svg/sprite.view.svg") 25% 100% no-repeat;
 }
 
 .svg-social-facebook-dims {
@@ -116,7 +125,7 @@
 }
 
 .svg-social-instagram {
-	background: url("svg/sprite.view.svg") 25% 100% no-repeat;
+	background: url("svg/sprite.view.svg") 50% 100% no-repeat;
 }
 
 .svg-social-instagram-dims {
@@ -125,7 +134,7 @@
 }
 
 .svg-social-pinterest {
-	background: url("svg/sprite.view.svg") 50% 100% no-repeat;
+	background: url("svg/sprite.view.svg") 75% 100% no-repeat;
 }
 
 .svg-social-pinterest-dims {
@@ -134,7 +143,7 @@
 }
 
 .svg-social-twitter {
-	background: url("svg/sprite.view.svg") 75% 100% no-repeat;
+	background: url("svg/sprite.view.svg") 100% 0 no-repeat;
 }
 
 .svg-social-twitter-dims {
@@ -143,7 +152,7 @@
 }
 
 .svg-social-vimeo {
-	background: url("svg/sprite.view.svg") 100% 0 no-repeat;
+	background: url("svg/sprite.view.svg") 100% 33.333333333333336% no-repeat;
 }
 
 .svg-social-vimeo-dims {
@@ -152,7 +161,7 @@
 }
 
 .svg-social-whatsapp {
-	background: url("svg/sprite.view.svg") 100% 33.333333333333336% no-repeat;
+	background: url("svg/sprite.view.svg") 100% 66.66666666666667% no-repeat;
 }
 
 .svg-social-whatsapp-dims {
@@ -161,7 +170,7 @@
 }
 
 .svg-social-youtube {
-	background: url("svg/sprite.view.svg") 100% 66.66666666666667% no-repeat;
+	background: url("svg/sprite.view.svg") 100% 100% no-repeat;
 }
 
 .svg-social-youtube-dims {
