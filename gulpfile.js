@@ -8,7 +8,9 @@
 
 var gulp = require('gulp' ),
     plumber = require('gulp-plumber'),
-    svgSprite = require('gulp-svg-sprite');
+    svgstore = require('gulp-svgstore'),
+    svgmin = require('gulp-svgmin'),
+    path = require('path');
 
 //-----------------------------------------------------
 // Global variables
@@ -16,38 +18,31 @@ var gulp = require('gulp' ),
 
 // SVG paths
 var inputSvg = 'src/*.svg';
-var outputSvg = 'dist/';
+var outputSvg = 'dist/images/';
 
 // SVG configuration
-var  configSvg               = {
-      shape               : {
-          dimension       : {         
-              maxWidth    : 32,
-              maxHeight   : 32
-          },
-          spacing         : {         
-              padding     : 10
-          },
-      },
-      mode                : {
-          view            : {        
-              bust        : false,
-              render      : {
-                  css    : true      
-              }
-          },
-          symbol          : true     
-      }
+var  configSvgMin = {
+    function (file) {
+        var prefix = path.basename(file.relative, path.extname(file.relative));
+        return {
+            plugins: [{
+                cleanupIDs: {
+                    prefix: prefix + '-',
+                    minify: true
+                }
+            }]
+        }
+    }
 };
 
 //-----------------------------------------------------
 // SVG task
 //-----------------------------------------------------
 
-gulp.task('svg', function() {
+gulp.task('svg', function () {
     return gulp
-      .src(inputSvg)
-      .pipe(svgSprite(configSvg))
-      .pipe(plumber())
-      .pipe(gulp.dest(outputSvg));
+        .src(inputSvg)
+        .pipe(svgmin(configSvgMin))
+        .pipe(svgstore())
+        .pipe(gulp.dest(outputSvg));
 });
