@@ -1,5 +1,5 @@
 //-----------------------------------------------------
-// SWAN Icons
+// Swan Icons
 // by Sebastian Serna
 // 2016
 //-----------------------------------------------------
@@ -10,6 +10,8 @@ var gulp = require('gulp' ),
     plumber = require('gulp-plumber'),
     svgstore = require('gulp-svgstore'),
     svgmin = require('gulp-svgmin'),
+    replace = require('gulp-replace'),
+    rename = require("gulp-rename"),    
     path = require('path');
 
 //-----------------------------------------------------
@@ -17,8 +19,11 @@ var gulp = require('gulp' ),
 //-----------------------------------------------------
 
 // SVG paths
-var inputSvg = 'src/*.svg';
+var inputSvg = 'src/svg/*.svg';
 var outputSvg = 'dist/images/';
+// var inputDistSvg = 'dist/images/svg.svg';
+// var outputDistSvg = 'dist/';
+
 
 // SVG configuration
 var  configSvgMin = {
@@ -44,5 +49,14 @@ gulp.task('svg', function () {
         .src(inputSvg)
         .pipe(svgmin(configSvgMin))
         .pipe(svgstore())
+        .pipe(rename('icons.svg')) 
         .pipe(gulp.dest(outputSvg));
 });
+
+// gulp.task('svg-color', function(){
+//        gulp
+//        .src(inputDistSvg)
+//        .pipe(replace('#231F20', 'currentColor'))
+//        .pipe(rename('icons.svg'))      
+//        .pipe(gulp.dest(outputDistSvg));
+//   });

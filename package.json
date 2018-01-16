@@ -15,14 +15,16 @@
     "ui"
   ],
   "author": "Sebastian Serna",
-  "license": "MIT",
+  "license": "Private",
   "bugs": {
     "url": "https://github.com/acuariux/swan-icons/issues"
   },
-  "homepage": "https://github.com/acuariux/swan-icons#readme",
+  "homepage": "https://github.com/acuariux/swan-icons",
   "devDependencies": {
     "gulp": "3.9.1",
     "gulp-plumber": "1.1.0",
+    "gulp-rename": "1.2.2",
+    "gulp-replace": "0.6.1",
     "gulp-svgmin": "1.2.3",
     "gulp-svgstore": "6.1.0"
   }
