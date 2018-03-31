@@ -1,2 +1,2 @@
-# swan-icons
-Icon set for Swan
+# Icons
+Icon set for Swanix
