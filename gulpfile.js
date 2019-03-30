@@ -1,7 +1,7 @@
 //-----------------------------------------------------
-// Swan Icons
+// Swanix Icons
 // by Sebastian Serna
-// 2016
+// (c) 2016-present
 //-----------------------------------------------------
 
 'use strict';
@@ -11,7 +11,8 @@ var gulp = require('gulp' ),
     svgstore = require('gulp-svgstore'),
     svgmin = require('gulp-svgmin'),
     replace = require('gulp-replace'),
-    rename = require("gulp-rename"),    
+    rename = require("gulp-rename"),
+    cheerio = require("gulp-cheerio"),
     path = require('path');
 
 //-----------------------------------------------------
@@ -20,9 +21,7 @@ var gulp = require('gulp' ),
 
 // SVG paths
 var inputSvg = 'src/svg/*.svg';
-var outputSvg = 'dist/images/';
-// var inputDistSvg = 'dist/images/svg.svg';
-// var outputDistSvg = 'dist/';
+var outputSvg = 'dist/';
 
 
 // SVG configuration
@@ -47,16 +46,14 @@ var  configSvgMin = {
 gulp.task('svg', function () {
     return gulp
         .src(inputSvg)
+        .pipe(cheerio({
+            run: function ($) {
+                $('[fill]').removeAttr('fill');
+            },
+            parserOptions: { xmlMode: true }
+        }))
         .pipe(svgmin(configSvgMin))
         .pipe(svgstore())
-        .pipe(rename('icons.svg')) 
+        .pipe(rename('swanix-icons.svg')) 
         .pipe(gulp.dest(outputSvg));
 });
-
-// gulp.task('svg-color', function(){
-//        gulp
-//        .src(inputDistSvg)
-//        .pipe(replace('#231F20', 'currentColor'))
-//        .pipe(rename('icons.svg'))      
-//        .pipe(gulp.dest(outputDistSvg));
-//   });
