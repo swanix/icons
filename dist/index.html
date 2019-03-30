@@ -6,9 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Swanix - Icons</title>
-    <!-- Estilos y Fuentes -->
-    <link rel="stylesheet" href="assets/styles/styles.css" type="text/css">
+    <title>Swanix - Icons</title>      
 </head>
 <body class="bg-gray-light">
 
@@ -16,16 +14,11 @@
 <section class="block gap-bottom">
     <div class="block-content bg-white"> 
         <div class="center">
-            <h2 class="header">ICONOS</h2>
+            <h2 class="header">ICONS</h2>
         </div>
         <hr> 
         <div class="row center">
-            <div class="column has-pad">
-                <style> 
-                    .demo-icons { display:flex;flex-wrap:wrap;margin-bottom: 20px; background: #FFFFFF; }
-                    .demo-icons-item { display: flex; flex-direction: column; align-items: center; flex-grow:1; flex-basis: 12%;;width:80px;height:120px; text-align: center; padding-top: 20px; border: 0.5px solid rgba(234, 239, 246, 0.5); }
-                    .demo-icons-name { font-size: 11px;}  
-                </style>
+            <div class="column has-pad"> 
                   <div class="demo-icons">
                       <div class="demo-icons-item"><svg class="icon huge"><use xlink:href="swanix-icons.svg#home"></use></svg><span class="demo-icons-name">home</span></div>
                       <div class="demo-icons-item"><svg class="icon huge"><use xlink:href="swanix-icons.svg#arrow-left"></use></svg><span class="demo-icons-name">arrow-left</span></div>
@@ -70,5 +63,55 @@
     </div>
 </section>
 
+    
+<style> 
+.demo-icons { display:flex;flex-wrap:wrap;margin-bottom: 20px; background: #FFFFFF; }
+.demo-icons-item { display: flex; flex-direction: column; align-items: center; flex-grow:1; flex-basis: 12%;;width:80px;height:120px; text-align: center; padding-top: 20px; border: 0.5px solid rgba(234, 239, 246, 0.5); }
+.demo-icons-name { font-size: 11px;}
+body {
+  font-family: sans-serif;
+}
+
+.icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  stroke-width: 0;
+  stroke: #4d4d4d;
+  fill: currentColor;
+  color: #4d4d4d;
+  vertical-align: middle;
+  transition: .2s;
+}
+.icon:hover {
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+  color: #666666;
+}
+.icon.small {
+  width: 16px;
+  height: 16px;
+}
+.icon.medium {
+  width: 24px;
+  height: 24px;
+}
+.icon.large {
+  width: 32px;
+  height: 32px;
+}
+.icon.huge {
+  width: 64px;
+  height: 64px;
+}
+.icon.light {
+  color: white;
+}
+.icon.dark {
+  color: black;
+}
+
+</style>    
 </body>
 </html>
