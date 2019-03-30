@@ -26,6 +26,7 @@
     "gulp-rename": "1.2.2",
     "gulp-replace": "0.6.1",
     "gulp-svgmin": "1.2.3",
-    "gulp-svgstore": "6.1.0"
+    "gulp-svgstore": "6.1.0",
+    "gulp-cheerio": "0.6.3"
   }
 }
