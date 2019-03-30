@@ -1,5 +1,5 @@
 {
-  "name": "swan-icons",
+  "name": "swanix-icons",
   "version": "0.1.0",
   "description": "Minimalistic icon set",
   "main": "index.js",
@@ -8,18 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/acuariux/swan-icons.git"
+    "url": "https://github.com/swanix/icons.git"
   },
   "keywords": [
     "icons",
     "ui"
   ],
   "author": "Sebastian Serna",
-  "license": "Private",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/acuariux/swan-icons/issues"
   },
-  "homepage": "https://github.com/acuariux/swan-icons",
+  "homepage": "https://github.com/swanix/icons",
   "devDependencies": {
     "gulp": "3.9.1",
     "gulp-plumber": "1.1.0",
