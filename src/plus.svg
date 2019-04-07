@@ -1,5 +1,3 @@
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="plus">
-<path id="plus_2" d="M4 13.9145V10.0576H10.0576V4H13.9443V10.0576H19.999V13.9145H13.9443V19.999H10.0576V13.9145H4Z" fill="black"/>
-</g>
+<path d="M4 13V11H11V4H13V11H20V13H13V20H11V13H4Z" fill="black"/>
 </svg>

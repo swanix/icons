@@ -1,4 +1,5 @@
 /* Icons Demo*/
+
 @import url('https://fonts.googleapis.com/css?family=Muli:300');
 
 body {
@@ -21,12 +22,16 @@ body {
     align-items: center; 
     flex-grow:1; 
     flex-basis: 12%;
-    width:120px;
-    height:110px; 
     text-align: center; 
-    padding-top: 20px; 
-    border: 0.5px solid rgba(234, 239, 246, 0.5); 
+    padding: 30px 10px; 
+    border: 1px solid rgba(234, 239, 246); 
     background: #FFFFFF; 
+    transition: .2s ease;
+}
+
+.demo-icons-item:hover { 
+  border: 1px solid rgba(0, 0, 0);
+  color: #000; 
 }
 
 .demo-icons-name { 
@@ -49,11 +54,10 @@ body {
    margin: 0 auto;
    padding: 4px;
    color: #FFF;
-   background: #B3B3B3;
+   background: #999;
    width: 50px;
    border-radius: 20px;
 }
-
 
 /* Search */
 
@@ -62,7 +66,7 @@ body {
 }
 
 .search-input {
-    width: 380px;
+    min-width: 280px;
     height: auto;
     font-size: 12px;
     margin-top: 15px;
@@ -70,53 +74,11 @@ body {
     border: solid 1px #CCCCCC;
     outline: 0;
     padding: 10px 10px;
-    transition: background-color .2s ease;
+    transition: .2s ease;
 }
 
 .search-input:focus {
     border: solid 1px #999999;
-}
-
-/* Icon styles */
-
-.icon {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  stroke-width: 0;
-  stroke: #4d4d4d;
-  fill: currentColor;
-  color: #4D4D4D;
-  vertical-align: middle;
-  transition: .2s;
-}
-.icon:hover {
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-  color: #4D4D4D;
-}
-.icon.small {
-  width: 16px;
-  height: 16px;
-}
-.icon.medium {
-  width: 24px;
-  height: 24px;
-}
-.icon.large {
-  width: 32px;
-  height: 32px;
-}
-.icon.huge {
-  width: 64px;
-  height: 64px;
-}
-.icon.light {
-  color: white;
-}
-.icon.dark {
-  color: black;
 }
 
 
