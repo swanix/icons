@@ -7,6 +7,7 @@
 'use strict';
 
 var gulp = require('gulp' ),
+    plumber = require('gulp-plumber'),
     svgstore = require('gulp-svgstore'),
     svgmin = require('gulp-svgmin'),
     rename = require("gulp-rename"),
@@ -14,7 +15,8 @@ var gulp = require('gulp' ),
     path = require('path'),
     header = require('gulp-header'),
     bump = require('gulp-bump'),
-    injectVersion = require('gulp-inject-version');
+    injectVersion = require('gulp-inject-version'),
+    browserSync = require('browser-sync');
 
 
 //-----------------------------------------------------
@@ -53,6 +55,7 @@ var  configSvgMin = {
 gulp.task('svg', function () {
     return gulp
         .src(inputSvg)
+        .pipe(plumber())
         .pipe(cheerio({
             run: function ($) {
                 $('[fill]').removeAttr('fill');
@@ -131,3 +134,33 @@ gulp.task('build-docs', function () {
 
 gulp.task("build", ['svg', 'svg-version', 'build-docs']);
 
+
+//-----------------------------------------------------
+// BrowserSync task (server)
+//-----------------------------------------------------
+
+gulp.task ('browser-sync' , function() {
+    browserSync.init({
+        server: {
+          baseDir: 'docs',
+          index: 'index.html',
+          serveStaticOptions: {
+            extensions: ['html']
+          }
+        }
+    });
+    gulp.watch([
+      'docs/*/*.html',
+      'docs/*/*.css',
+      'docs/*/*.json',
+      'docs/*/*.js',
+      'docs/*/*.svg'
+      ]).on("change", browserSync.reload);
+});
+
+
+//-----------------------------------------------------
+// Watch tasks
+//-----------------------------------------------------
+
+gulp.task('watch', ['browser-sync']);

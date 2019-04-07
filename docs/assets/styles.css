@@ -4,7 +4,7 @@
 body {
     font-family: sans-serif;
     background: #F7F7F7;
-  }  
+}  
 
 .demo-icons { 
     max-width: 1140px;
@@ -94,7 +94,7 @@ body {
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
-  color: #666666;
+  color: #4D4D4D;
 }
 .icon.small {
   width: 16px;
