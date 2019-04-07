@@ -13,7 +13,8 @@ var gulp = require('gulp' ),
     cheerio = require("gulp-cheerio"),
     path = require('path'),
     header = require('gulp-header'),
-    bump = require('gulp-bump');
+    bump = require('gulp-bump'),
+    injectVersion = require('gulp-inject-version');
 
 
 //-----------------------------------------------------
@@ -21,12 +22,10 @@ var gulp = require('gulp' ),
 //-----------------------------------------------------
 
 // SVG paths
-var inputSvg = 'src/svg/*.svg';
+var inputSvg = 'src/*.svg';
 var outputSvg = 'dist/';
 var outputSvgDocs = 'docs/';
 var svgDistFile = 'dist/swanix-icons.svg';
-var svgDocsFile = 'docs/swanix-icons.svg';
-
 
 // SVG configuration
 var  configSvgMin = {
@@ -67,12 +66,8 @@ gulp.task('svg', function () {
         .pipe(gulp.dest(outputSvgDocs));
 });
 
-gulp.task('svg-version', function () {
-
-});
-
 //-----------------------------------------------------
-// Version tasks
+// Version increment tasks
 //-----------------------------------------------------
    
 // Semantic major
@@ -97,7 +92,7 @@ gulp.task('v-patch', function(){
 });
 
 //-----------------------------------------------------
-// Header tasks
+// Version header tasks
 //-----------------------------------------------------
 
 // using data from package.json
@@ -110,9 +105,29 @@ var versionHtml = ['<!--',
   ''].join('\n');
  
 // Version HTML/XML
-gulp.task('svg-version', function(){
+gulp.task('svg-version', ['svg'], function(){
     gulp.src(svgDistFile)
     .pipe(header(versionHtml, { pkg : pkg } ))
     .pipe(gulp.dest('./dist/'))
     .pipe(gulp.dest('./docs/'));
 });
+
+//-----------------------------------------------------
+// Inject version task
+//-----------------------------------------------------
+
+gulp.task('build-docs', function () {
+    return gulp.src('src/_docs/index.html')
+        .pipe(injectVersion({
+            package_file: 'package.json',
+        }))
+        .pipe(gulp.dest('docs/'));
+});
+
+
+//-----------------------------------------------------
+// Build task
+//-----------------------------------------------------
+
+gulp.task("build", ['svg', 'svg-version', 'build-docs']);
+
