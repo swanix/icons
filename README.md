@@ -11,7 +11,6 @@ Este proyecto se encuentra en una etapa experimental y puede contener inconsiste
 
 ## ¿Cómo utilizar el set de iconos?
 
----
 ### Método 1 - Sprite SVG como archivo externo
 
 Descarga los archivos de la carpeta `dist`
@@ -35,7 +34,7 @@ En el anterior ejemplo se mostrará el icono `home` (la palabra después del sí
 
 Advertencia: con este método el archivo SVG debe encontrarse en el mismo dominio donde se cargan los archivos HTML, de lo contrario no se mostrará correctamente el sprite, esto se debe a una limitación de seguridad de los archivos XML para ser cargados desde dominios externos (son bloqueados por algunos navegadores). Para saber más puedes leer el siguiente artículo: [Understanding CORS and SVG](https://oreillymedia.github.io/Using_SVG/extras/ch10-cors.html) 
 
----
+
 ### Método 2 - Sprite SVG como archivo en CDN
 
 Este método es todavía experimental y consiste en inyectar el sprite SVG vía AJAX, de esta manera evitamos el bloqueo del archivo cuando lo utilizamos desde un dominio diferente al principal, esto es ideal cuando trabajamos con un CDN para almacenar nuestros archivos estáticos. Para probar su funcionamiento puedes incluir en el `<head>` de tu HTML los archivos que apuntan a nuestro CDN:
@@ -51,7 +50,7 @@ Para incluir los iconos debes omitir la ruta completa al archivo, solo es necesa
 <svg class="icon"><use xlink:href="#home"></use></svg>
 ```
 
-En el ejemplo anterior se mostrará el icono `home` en el HTML.
+En el ejemplo anterior se mostrará el icono `home` en el HTML. Puedes probar tu mismo utilizando esta [plantilla de CodePen](https://codepen.io/pen?template=942b289b3aad6cf8192d1ac90e27f6d3) que incluye los archivos que apuntan a nuestro CDN.
 
 
 También puedes descargar los 3 archivos (CSS, SVG y JS) para incluirlos en tu propio CDN, pero recuerda que debes referenciar la nueva ruta del sprite SVG en el archivo `swanix-icons.js`:
