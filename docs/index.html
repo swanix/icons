@@ -10,13 +10,14 @@
 </head>
 <body>
 
-<div id="app">
-    <!-- Topbar -->
-    <div id="topbar" class="topbar">
+<div class="layout" id="app">
+    <div class="layout-section header">
         <div class="logo">
-          <h2 class="logo-text">Swanix Icons</h2>
-          <h6 class="version">v0.1.1</h6>
+            <h2 class="logo-text">Swanix Icons</h2>
+            <h6 class="version">v0.1.1</h6>
         </div>
+    </div>
+    <div class="layout-section sidebar-left">
         <div class="filters">
             <input id="search" class="search-input" v-model="search" type="text" placeholder="Search icons" autocapitalize="none" />
             <div class="result-number" v-cloak>
@@ -25,16 +26,22 @@
             </div>
         </div>
     </div>
-    <main id="icons">
-        <div class="demo-icons">
+    <div class="layout-section content">
+        <div class="demo-icons" id="icons">
             <div class="demo-icons-item" v-for="icon in filterIcons">            
-                    <svg class="icon huge">
-                      <use v-bind:href="'swanix-icons.svg#' + icon.name"></use>
-                    </svg>
-                    <span v-cloak class="demo-icons-name">{{ icon.name }}</span></div>
+                <svg class="icon huge">
+                    <use v-bind:href="'swanix-icons.svg#' + icon.name"></use>
+                </svg>
+                <span v-cloak class="demo-icons-name">{{ icon.name }}</span>
             </div>
         </div>
-    </main>
+    </div>
+    <div class="layout-section sidebar-right">
+        
+    </div>
+    <div class="layout-section footer">
+        
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
