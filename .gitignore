@@ -12,6 +12,7 @@ ehthumbs.db
 Thumbs.db
 *.scssc
 
-# Ignore Node.js modules
+# Ignore Node files
 
 node_modules/*
+package-lock.json
