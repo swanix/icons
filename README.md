@@ -6,7 +6,7 @@ Minimal icon set
 https://swanix.org/icons
 
 
-Este proyecto se encuentra en una etapa experimental y puede contener inconsistencias y cambios inesperados sin previo aviso.
+Este proyecto se encuentra en una etapa experimental, puede contener inconsistencias y cambios inesperados sin previo aviso.
 
 
 ## ¿Cómo utilizar el set de iconos?
@@ -61,7 +61,6 @@ ajax.open("GET", "url/to/cdn/swanix-icons.svg", true);
 
 Este método se basa en el artículo [Ajaxing for your SVG Sprite](https://css-tricks.com/ajaxing-svg-sprite/)
 
----
 
 ## Licencia
 
