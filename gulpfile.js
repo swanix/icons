@@ -4,98 +4,73 @@
 // (c) 2016-present
 //-----------------------------------------------------
 
-'use strict';
 
-var gulp = require('gulp' ),
-    plumber = require('gulp-plumber'),
-    svgstore = require('gulp-svgstore'),
-    svgmin = require('gulp-svgmin'),
-    rename = require("gulp-rename"),
-    cheerio = require("gulp-cheerio"),
-    path = require('path'),
-    header = require('gulp-header'),
-    bump = require('gulp-bump'),
-    injectVersion = require('gulp-inject-version'),
-    browserSync = require('browser-sync');
+const { src, dest, watch, series, parallel } = require('gulp');
+// General plugins
+const browserSync = require('browser-sync');
+const rename = require("gulp-rename");
+const plumber = require('gulp-plumber');
+const nunjucks = require('gulp-nunjucks');
+const data = require('gulp-data');
+const header = require('gulp-header');
+// Project specific
+const svgstore = require('gulp-svgstore');
+const svgmin = require('gulp-svgmin');
+const cheerio = require("gulp-cheerio");
+const path = require('path');
 
 
 //-----------------------------------------------------
-// Global variables
+// Server tasks (BrowserSync)
 //-----------------------------------------------------
 
-// SVG paths
-var inputSvg = 'src/*.svg';
-var outputSvg = 'dist/';
-var outputSvgDocs = 'docs/';
-var svgDistFile = 'dist/swanix-icons.svg';
-
-// SVG configuration
-var  configSvgMin = {
-    function (file) {
-        var prefix = path.basename(file.relative, path.extname(file.relative));
-        return {
-            plugins: [{
-                removeXMLProcInst: true
-                }, {
-                removeDoctype: false
-                }, {
-                cleanupIDs: {
-                    prefix: prefix + '-',
-                    minify: true
-                }
-            }]
+function browser_sync() {
+  browserSync.init({
+    server: {
+        baseDir: 'docs',
+        index: 'index.html',
+        serveStaticOptions: {
+          extensions: ['html']
         }
     }
-};
+  });
+}
+
+function watch_files() {
+  watch([
+    'docs/*/*.html',
+    'docs/*/*.css',
+    'docs/*/*.json',
+    'docs/*/*.js',
+    'docs/*/*.svg'
+  ]).on("change", browserSync.reload);
+}
 
 //-----------------------------------------------------
-// SVG task
+// HTML compiler task
 //-----------------------------------------------------
 
-gulp.task('svg', function () {
-    return gulp
-        .src(inputSvg)
-        .pipe(plumber())
-        .pipe(cheerio({
-            run: function ($) {
-                $('[fill]').removeAttr('fill');
-            },
-            parserOptions: { xmlMode: true }
-        }))
-        .pipe(svgmin(configSvgMin))
-        .pipe(svgstore({ inlineSvg: true }))
-        .pipe(rename('swanix-icons.svg')) 
-        .pipe(gulp.dest(outputSvg))
-        .pipe(gulp.dest(outputSvgDocs));
-});
+// Nunjucks to HTML paths
+var inputHtml = 'docs/templates/*.njk';
+var inputAllHtml = 'docs/templates/**/*.njk';
+var outputHtml = 'docs/';
+
+function html_compiler() {
+  return src(inputHtml)
+    .pipe(data(function() {
+      delete require.cache[require.resolve('./package.json')];
+      pkg = require('./package.json');
+      return pkg;
+    }))
+    .pipe(nunjucks.compile())
+    .pipe(rename({
+      extname: '.html'
+    }))
+    .pipe(dest(outputHtml));
+}
 
 //-----------------------------------------------------
-// Version increment tasks
-//-----------------------------------------------------
-   
-// Semantic major
-gulp.task('v-major', function(){
-    gulp.src('./package.json')
-    .pipe(bump({type:'major'}))
-    .pipe(gulp.dest('./'));
-});
-
-// Semantic minor
-gulp.task('v-minor', function(){
-    gulp.src('./package.json')
-    .pipe(bump({type:'minor'}))
-    .pipe(gulp.dest('./'));
-});
-
-// Semantic patch
-gulp.task('v-patch', function(){
-    gulp.src('./package.json')
-    .pipe(bump())
-    .pipe(gulp.dest('./'));
-});
-
-//-----------------------------------------------------
-// Version header tasks
+// Version header task
 //-----------------------------------------------------
 
 // using data from package.json
@@ -108,59 +83,65 @@ var versionHtml = ['<!--',
   ''].join('\n');
  
 // Version HTML/XML
-gulp.task('svg-version', ['svg'], function(){
-    gulp.src(svgDistFile)
+function svg_version() {
+    return src(svgDistFile)
     .pipe(header(versionHtml, { pkg : pkg } ))
-    .pipe(gulp.dest('./dist/'))
-    .pipe(gulp.dest('./docs/'));
-});
-
-//-----------------------------------------------------
-// Inject version task
-//-----------------------------------------------------
-
-gulp.task('build-docs', function () {
-    return gulp.src('src/_docs/index.html')
-        .pipe(injectVersion({
-            package_file: 'package.json',
-        }))
-        .pipe(gulp.dest('docs/'));
-});
+    .pipe(dest('./dist/'))
+    .pipe(dest('./docs/'));
+}
 
 
 //-----------------------------------------------------
-// Build task
+// SVG task
 //-----------------------------------------------------
 
-gulp.task("build", ['svg', 'svg-version', 'build-docs']);
+// SVG paths
+var inputSvg = 'src/*.svg';
+var outputSvg = 'dist/';
+var outputSvgDocs = 'docs/';
+var svgDistFile = 'dist/swanix-icons.svg';
 
-
-//-----------------------------------------------------
-// BrowserSync task (server)
-//-----------------------------------------------------
-
-gulp.task ('browser-sync' , function() {
-    browserSync.init({
-        server: {
-          baseDir: 'docs',
-          index: 'index.html',
-          serveStaticOptions: {
-            extensions: ['html']
-          }
+// SVG configuration
+var configSvgMin = {
+  function (file) {
+    var prefix = path.basename(file.relative, path.extname(file.relative));
+    return {
+      plugins: [{
+        removeXMLProcInst: true
+        }, {
+        removeDoctype: false
+        }, {
+        cleanupIDs: {
+            prefix: prefix + '-',
+            minify: true
         }
-    });
-    gulp.watch([
-      'docs/*/*.html',
-      'docs/*/*.css',
-      'docs/*/*.json',
-      'docs/*/*.js',
-      'docs/*/*.svg'
-      ]).on("change", browserSync.reload);
-});
+      }]
+    }
+  }
+};
 
+function svg_sprite () {
+    return src(inputSvg)
+      .pipe(plumber())
+      .pipe(cheerio({
+          run: function ($) {
+              $('[fill]').removeAttr('fill');
+          },
+          parserOptions: { xmlMode: true }
+      }))
+      .pipe(svgmin(configSvgMin))
+      .pipe(svgstore({ inlineSvg: true }))
+      .pipe(rename('swanix-icons.svg')) 
+      .pipe(dest(outputSvg))
+      .pipe(dest(outputSvgDocs));
+}
 
 //-----------------------------------------------------
-// Watch tasks
+// TASKS
 //-----------------------------------------------------
 
-gulp.task('watch', ['browser-sync']);
+exports.default = parallel(browser_sync, watch_files, html_compiler)
+exports.html = html_compiler
+exports.svg = series(svg_sprite, svg_version)
+
+  

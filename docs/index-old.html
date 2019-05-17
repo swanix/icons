@@ -1,18 +1,12 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta name="robots" content="noindex, nofollow">
-  <meta charset="utf-8">
-  <!-- Global -->
-  <title>Swanix - Icons</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="Experimental UI Framework">
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="images/favicon.ico">
-  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon.png" />
-  <!-- Styles and fonts -->
-  <link rel="stylesheet" href="assets/demo.css" type="text/css" />
-  <link rel="stylesheet" href="assets/swanix-icons.css" type="text/css" />  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Swanix - Icons</title>
+    <link rel="stylesheet" href="assets/demo.css" type="text/css" />
+    <link rel="stylesheet" href="assets/swanix-icons.css" type="text/css" />            
 </head>
 <body>
 
@@ -27,8 +21,8 @@
         <div class="filters">
             <input id="search" class="search-input" v-model="search" type="text" placeholder="Search icons" autocapitalize="none" />
             <div class="result-number" v-cloak>
-                <p v-if="filterIcons.length === 1"> icon</p>
-                <p v-else> icons</p>
+                <p v-if="filterIcons.length === 1">{{ filterIcons.length }} icon</p>
+                <p v-else>{{ filterIcons.length }} icons</p>
             </div>
         </div>
     </div>
@@ -38,12 +32,9 @@
                 <svg class="icon huge">
                     <use v-bind:href="'swanix-icons.svg#' + icon.name"></use>
                 </svg>
-                <span v-cloak class="demo-icons-name"></span>
+                <span v-cloak class="demo-icons-name">{{ icon.name }}</span>
             </div>
         </div>
-        
-
-
     </div>
     <div class="sidebar-right">
         
@@ -56,5 +47,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
 <script src="assets/app.js"></script>
 
+   
 </body>
 </html>
