@@ -4,7 +4,6 @@
 // (c) 2016-present
 //-----------------------------------------------------
 
-
 const { src, dest, watch, series, parallel } = require('gulp');
 // General plugins
 const browserSync = require('browser-sync');
@@ -19,12 +18,11 @@ const svgmin = require('gulp-svgmin');
 const cheerio = require("gulp-cheerio");
 const path = require('path');
 
-
 //-----------------------------------------------------
-// Server tasks (BrowserSync)
+// Server tasks
 //-----------------------------------------------------
 
-function browser_sync() {
+function watch_files() {
   browserSync.init({
     server: {
         baseDir: 'docs',
@@ -34,16 +32,11 @@ function browser_sync() {
         }
     }
   });
-}
-
-function watch_files() {
-  watch([
-    'docs/*/*.html',
-    'docs/*/*.css',
-    'docs/*/*.json',
-    'docs/*/*.js',
-    'docs/*/*.svg'
-  ]).on("change", browserSync.reload);
+  watch('./docs/**/*.njk', html_compiler);
+  watch('./docs/**/*.html').on('change', browserSync.reload);
+  watch('./docs/**/*.json').on('change', browserSync.reload);
+  watch('./docs/**/*.svg').on('change', browserSync.reload);
+  watch('package.json', series(html_compiler, svg_sprite, svg_version));
 }
 
 //-----------------------------------------------------
@@ -74,6 +67,7 @@ function html_compiler() {
 //-----------------------------------------------------
 
 // using data from package.json
+delete require.cache[require.resolve('./package.json')];
 var pkg = require('./package.json');
 var versionHtml = ['<!--',
   ' <%= pkg.name %> - v<%= pkg.version %>',
@@ -89,7 +83,6 @@ function svg_version() {
     .pipe(dest('./dist/'))
     .pipe(dest('./docs/'));
 }
-
 
 //-----------------------------------------------------
 // SVG task
@@ -140,8 +133,7 @@ function svg_sprite () {
 // TASKS
 //-----------------------------------------------------
 
-exports.default = parallel(browser_sync, watch_files, html_compiler)
-exports.html = html_compiler
-exports.svg = series(svg_sprite, svg_version)
-
-  
+exports.default = watch_files;
+exports.watch = watch_files;
+exports.html = html_compiler;
+exports.svg = series(svg_sprite, svg_version);
