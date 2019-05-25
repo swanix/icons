@@ -27,8 +27,8 @@
         <div class="filters">
             <input id="search" class="search-input" v-model="search" type="text" placeholder="Search icons" autocapitalize="none" />
             <div class="result-number" v-cloak>
-                <p v-if="filterIcons.length === 1">{{ filterIcons.length }} icon</p>
-                <p v-else>{{ filterIcons.length }} icons</p>
+                <p v-if="filterIcons.length === 1">${filterIcons.length} icon</p>
+                <p v-else>${filterIcons.length} icons</p>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
                 <svg class="icon huge">
                     <use v-bind:href="'swanix-icons.svg#' + icon.name"></use>
                 </svg>
-                <span v-cloak class="demo-icons-name">{{ icon.name }}</span>
+                <span v-cloak class="demo-icons-name">${icon.name}</span>
             </div>
         </div>
         {% block content %}

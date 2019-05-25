@@ -1,6 +1,7 @@
 var dataIcons = 'assets/icons.json';
 new Vue({
     el: '#app',
+    delimiters: ['${', '}'],
     created: function() {
         this.getIcons();
     },
