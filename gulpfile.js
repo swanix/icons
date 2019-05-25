@@ -137,3 +137,4 @@ exports.default = watch_files;
 exports.watch = watch_files;
 exports.html = html_compiler;
 exports.svg = series(svg_sprite, svg_version);
+exports.build = series(svg_sprite, svg_version, html_compiler);

@@ -50,8 +50,7 @@ Para incluir los iconos debes omitir la ruta completa al archivo, solo es necesa
 <svg class="icon"><use xlink:href="#home"></use></svg>
 ```
 
-En el ejemplo anterior se mostrará el icono `home` en el HTML. Puedes probar tu mismo utilizando esta [plantilla de CodePen](https://codepen.io/pen?template=942b289b3aad6cf8192d1ac90e27f6d3) que incluye los archivos que apuntan a nuestro CDN.
-
+En el ejemplo anterior se mostrará el icono `home` en el HTML. Puedes probar tú mismo utilizando esta [plantilla de CodePen](https://codepen.io/pen?template=942b289b3aad6cf8192d1ac90e27f6d3) que incluye los archivos que apuntan a nuestro CDN.
 
 También puedes descargar los 3 archivos (CSS, SVG y JS) para incluirlos en tu propio CDN, pero recuerda que debes referenciar la nueva ruta del sprite SVG en el archivo `swanix-icons.js`:
 

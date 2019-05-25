@@ -4,7 +4,10 @@
   "description": "Minimal icon set",
   "main": "index.js",
   "scripts": {
-    "gulp": "gulp"
+    "watch": "gulp",
+    "html": "gulp html",
+    "svg": "gulp svg",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
