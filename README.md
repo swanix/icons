@@ -65,7 +65,7 @@ Este método se basa en el artículo [Ajaxing for your SVG Sprite](https://css-t
 
 The MIT License (MIT)
 
-Copyright (c) 2016 - presente 
+Copyright (c) 2016 - present 
 
 Sebastian Serna
 
