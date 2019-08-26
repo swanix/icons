@@ -9,7 +9,6 @@ const { src, dest, watch, series, parallel } = require('gulp');
 const browserSync = require('browser-sync');
 const rename = require("gulp-rename");
 const plumber = require('gulp-plumber');
-const nunjucks = require('gulp-nunjucks');
 const data = require('gulp-data');
 const header = require('gulp-header');
 // Project specific
@@ -32,34 +31,10 @@ function watch_files() {
         }
     }
   });
-  watch('./docs/**/*.njk', html_compiler);
   watch('./docs/**/*.html').on('change', browserSync.reload);
   watch('./docs/**/*.json').on('change', browserSync.reload);
   watch('./docs/**/*.svg').on('change', browserSync.reload);
-  watch('package.json', series(html_compiler, svg_sprite, svg_version));
-}
-
-//-----------------------------------------------------
-// HTML compiler task
-//-----------------------------------------------------
-
-// Nunjucks to HTML paths
-var inputHtml = 'docs/templates/*.njk';
-var inputAllHtml = 'docs/templates/**/*.njk';
-var outputHtml = 'docs/';
-
-function html_compiler() {
-  return src(inputHtml)
-    .pipe(data(function() {
-      delete require.cache[require.resolve('./package.json')];
-      pkg = require('./package.json');
-      return pkg;
-    }))
-    .pipe(nunjucks.compile())
-    .pipe(rename({
-      extname: '.html'
-    }))
-    .pipe(dest(outputHtml));
+  watch('package.json', series(svg_sprite, svg_version));
 }
 
 //-----------------------------------------------------
@@ -135,6 +110,5 @@ function svg_sprite () {
 
 exports.default = watch_files;
 exports.watch = watch_files;
-exports.html = html_compiler;
 exports.svg = series(svg_sprite, svg_version);
-exports.build = series(svg_sprite, svg_version, html_compiler);
+exports.build = series(svg_sprite, svg_version);

@@ -61,6 +61,16 @@ ajax.open("GET", "url/to/cdn/swanix-icons.svg", true);
 Este método se basa en el artículo [Ajaxing for your SVG Sprite](https://css-tricks.com/ajaxing-svg-sprite/)
 
 
+
+
+
+
+
+
+
+
+
+
 ## Licencia
 
 The MIT License (MIT)
