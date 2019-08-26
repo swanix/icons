@@ -61,15 +61,90 @@ ajax.open("GET", "url/to/cdn/swanix-icons.svg", true);
 Este método se basa en el artículo [Ajaxing for your SVG Sprite](https://css-tricks.com/ajaxing-svg-sprite/)
 
 
+---------
+
+## Contribuciones
+
+### Requisitos
+
+Antes de iniciar debes tener previamente instalados:
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/)
+
+## Instalación
+
+En una carpeta vacía de tu equipo escribe el siguiente comando en la terminal:
+
+```
+git clone https://github.com/swanix/ui.git
+```
+
+Cuando se termine de clonar el proyecto escribe el comando:
+
+```
+npm install
+```
+Este comando instalará las dependencias de Node.js especificadas en el archivo `package.json` (en esencia se trata de [Gulp.js](http://gulpjs.com/) y una serie de plugins necesarios para automatizar algunas tareas de desarrollo).
+
+Las dependencias se instalan en la carpeta `node_modules` (creada automáticamente con el comando `npm install`) y luego de instaladas podemos utilizar Gulp para ver nuestra página de inicio con:
+
+```
+npm run watch
+```
+Este comando ejecuta un servidor estático que apunta a la carpeta `docs` este abrirá el navegador de forma automática mostrando el sitio de prueba con ejemplos del framework y observando si se realizan cambios en los archivos de la carpeta `src` para generar el código de estilos CSS y HTML.
+
+## Estructura de Directorios
+
+```sh
+ui/  # Carpeta raíz del repositorio
+│
+├── dist/               # Código generado para producción       
+│   ├── swanix-icons.svg 
+│   ├── swanix-icons.css    
+│   └── swanix-icons.js
+│
+├── docs/               # Documentación y demos     
+│   ├── assets/
+│   ├── content/
+│   └── index.html
+│       
+├── src/               # Código fuente para desarrollo      
+│   ├── _figma/
+│   ├── icon1.svg        
+│   ├── icon2.svg   
+│   ├── icon3.svg  
+│   ├── ... 
+│   └── icon40.svg
+│ 
+│       
+├── README.md       
+├── gulpfile.js     # Tasks de Gulp
+└── package.json    # Dependencias de Node.js
+│
+└---------------------------------------------------------
+```
+
+Cuando ejecutamos el comando `npm run watch` cualquier cambio realizado en los archivos de la carpeta `src` se compilarán en la carpeta `dist` utilizando el plugin `gulp-sass`.
 
 
+## Módulos de Node.js
 
+Para el desarrollo se utilizan los siguientes módulos de Node.js (la mayoría son plugins de Gulp).
 
+|Módulo|Versión|Descripción|
+|--- |--- |--- |
+|browser-sync|2.18.12|Permite ejecutar un servidor local y visualizar nuestro sitio en múltiples navegadores remotos en tiempo real.|
+|gulp|4.0.2|Módulo oficial de Gulp para Node.js|
+|gulp-rename|1.2.2|Permite renombrar archivos con el nombre que le especifiquemos|
+|gulp-plumber|1.1.0|Permite manejar e identificar errores en tiempo de ejecución.|
+|gulp-header|2.0.7|Permite añadir encabezados a cualquier archivo.|
+|gulp-svgmin|1.2.3| Permite minificar y optimizar archivos SVG|
+|gulp-svgstore|6.1.0| Permite fusionar archivos SVG individuales en un solo sprite SVG|
+|gulp-cheerio|0.6.3| Permite modificar elementos HTML y XML con Cheerio|
+|gulp-data|1.3.1| Permite generar datos a partir de diferentes fuentes: json, front-matter, databases, promises, etc.|
 
-
-
-
-
+-------
 
 ## Licencia
 
