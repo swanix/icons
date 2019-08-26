@@ -77,7 +77,7 @@ Antes de iniciar debes tener previamente instalados:
 En una carpeta vacía de tu equipo escribe el siguiente comando en la terminal:
 
 ```
-git clone https://github.com/swanix/ui.git
+git clone https://github.com/swanix/icons.git
 ```
 
 Cuando se termine de clonar el proyecto escribe el comando:
@@ -97,19 +97,19 @@ Este comando ejecuta un servidor estático que apunta a la carpeta `docs` este a
 ## Estructura de Directorios
 
 ```sh
-ui/  # Carpeta raíz del repositorio
+icons/  # Carpeta raíz del repositorio
 │
-├── dist/               # Código generado para producción       
+├── dist/                 # Código generado para producción       
 │   ├── swanix-icons.svg 
 │   ├── swanix-icons.css    
 │   └── swanix-icons.js
 │
-├── docs/               # Documentación y demos     
+├── docs/                 # Documentación y demos     
 │   ├── assets/
 │   ├── content/
 │   └── index.html
 │       
-├── src/               # Código fuente para desarrollo      
+├── src/                  # Código fuente para desarrollo      
 │   ├── _figma/
 │   ├── icon1.svg        
 │   ├── icon2.svg   
@@ -124,9 +124,6 @@ ui/  # Carpeta raíz del repositorio
 │
 └---------------------------------------------------------
 ```
-
-Cuando ejecutamos el comando `npm run watch` cualquier cambio realizado en los archivos de la carpeta `src` se compilarán en la carpeta `dist` utilizando el plugin `gulp-sass`.
-
 
 ## Módulos de Node.js
 
