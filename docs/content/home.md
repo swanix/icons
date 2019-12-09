@@ -1,3 +1,5 @@
+# Icons library
+
 <div id="icons" class="demo-icons">
     <div class="demo-icons-item">
         <svg class="icon huge">
