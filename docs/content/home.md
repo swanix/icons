@@ -1,4 +1,4 @@
-# Icons library
+# Library
 
 <div id="icons" class="demo-icons">
     <div class="demo-icons-item">
