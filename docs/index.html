@@ -1,87 +1,51 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
+  <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
-  <meta charset="utf-8">
-  <!-- Global -->
-  <title>Swanix - Icons</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="Experimental UI Framework">
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="images/favicon.ico">
-  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon.png" />
-  <!-- Styles and fonts -->
+  <title>Swanix Icons</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Styles -->
   <link rel="stylesheet" href="assets/styles.css" type="text/css" />
   <link rel="stylesheet" href="assets/swanix-icons.css" type="text/css" />
-  <link rel="stylesheet" href="https://swanix.org/assets/docsify-custom.css">  
+  <link rel="stylesheet" href="https://swanix.org/assets/docsify-custom.css">
 </head>
 <body>
-<div class="menu-container"></div>
-<div class="layout" id="app">
-    <div class="header">
-        <div class="logo">
-            <h2 class="logo-text">Swanix Icons</h2>
-            <h6 class="version">v0.1.1</h6>
-        </div>
-    </div>
-    <div class="sidebar-left">
-        <div class="filters">
-            <input id="search" class="search-input" v-model="search" type="text" placeholder="Search icons" autocapitalize="none" />
-            <div class="result-number" v-cloak>
-                <p v-if="filterIcons.length === 1">{{filterIcons.length}} icon</p>
-                <p v-else>{{filterIcons.length}} icons</p>
-            </div>
-        </div>
-    </div>
-    <div class="content-area">
-        <div class="demo-icons" id="icons">
-            <div class="demo-icons-item" v-for="icon in filterIcons">            
-                <svg class="icon huge">
-                    <use v-bind:href="'assets/swanix-icons.svg#' + icon.name"></use>
-                </svg>
-                <span v-cloak class="demo-icons-name">{{icon.name}}</span>
-            </div>
-        </div>
-    </div>
-    <div class="sidebar-right">
-        
-    </div>
-    <div class="footer">
-    </div>
-</div>
+  <div class="menu-container"></div>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: "Swanix Icons",
+      themeColor: '#000',
+      basePath: 'content/',
+      homepage: 'home.md',
+      loadSidebar: '_menu.md',
+      subMaxLevel: 1,
+      auto2top: true,
+      coverpage: false,
+      notFoundPage: true,
+      relativePath: true,
+      pagination: {
+          previousText: 'Anterior',
+          nextText: 'Siguiente',
+          crossChapter: true
+      }
+    };
+  </script>
 
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
-<script src="https://swanix.org/assets/menu-global.js"></script>
-
-<script>
-var dataIcons = 'content/icons.json';
-new Vue({
-  el: '#app',
-  created: function() {
-    this.getIcons();
-  },
-  data: {
-    icons: [],
-    search: '',
-  },
-  methods: {
-    getIcons: function() {
-      axios.get(dataIcons).then(response => {
-          this.icons = response.data
-      });
-    }
-  },
-  computed: {
-    filterIcons: function() {
-      return this.icons.filter((icon) => {
-        // Using normalize based on https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
-        return  icon.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").match(this.search) 
-      });
-    }
-  }
-});
-</script>
-
+  <!-- Docsify -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- Docsify plugins -->
+  <script src="//unpkg.com/docsify-copy-code"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- Vuejs -->
+  <script src="//unpkg.com/vue/dist/vue.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+  <!-- Custom menu -->
+  <script src="https://swanix.org/assets/menu-global.js"></script>
+  <script>
+    //createMenuGlobal();
+  </script>
 </body>
 </html>
