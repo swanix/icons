@@ -1,10 +1,20 @@
+<p align="center">
+    <img alt="Swanix" title="Swanix Icons" src="https://swanix.org/assets/images/apple-touch-icon.png">
+</p>
+<h1 align="center"> Swanix Icons </h1>
+<p align="center">
+    Minimal icon set <br>
+    https://swanix.org/icons
+</p>
 
-# Swanix Icons
+<p align="center">
+    <img alt="Swanix" title="Swanix Brand" src="https://img.shields.io/badge/status-beta-mediumpurple">
+    <img alt="Swanix" title="Swanix Brand" src="https://img.shields.io/badge/version-v0.1.0-blue">
+    <img alt="Swanix" title="Swanix Brand" src="https://img.shields.io/github/license/swanix/ui?color=blue">
+</p>
 
-Minimal icon set
 
-https://swanix.org/icons
-
+---
 
 Este proyecto se encuentra en una etapa experimental, puede contener inconsistencias y cambios inesperados sin previo aviso.
 
