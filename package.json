@@ -4,7 +4,7 @@
   "description": "Minimal icon set",
   "main": "index.js",
   "scripts": {
-    "watch": "gulp",
+    "serve": "gulp",
     "svg": "gulp svg",
     "build": "gulp build"
   },
