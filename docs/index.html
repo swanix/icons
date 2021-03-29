@@ -25,13 +25,19 @@
     // coverpage: '_site-cover.md',
     homepage: '_site-home.md',
     loadSidebar: '_site-menu.md',
-    subMaxLevel: 2,
+    subMaxLevel: 1,
     auto2top: true,
     notFoundPage: false,
     pagination: {
       previousText: 'Previous',
       nextText: 'Next',
       crossChapter: true
+    },
+    mustache: {
+      noPackage : true,
+      data: [
+        'content/data/icons.json'
+      ]
     }
   };
 </script>
