@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Swanix - Icons</title>
+    <link rel="stylesheet" href="assets/demo.css" type="text/css" />
+    <link rel="stylesheet" href="assets/swanix-icons.css" type="text/css" />            
+</head>
+<body>
+
+<div class="layout" id="app">
+    <div class="header">
+        <div class="logo">
+            <h2 class="logo-text">Swanix Icons</h2>
+            <h6 class="version">%%GULP_INJECT_VERSION%%</h6>
+        </div>
+    </div>
+    <div class="sidebar-left">
+        <div class="filters">
+            <input id="search" class="search-input" v-model="search" type="text" placeholder="Search icons" autocapitalize="none" />
+            <div class="result-number" v-cloak>
+                <p v-if="filterIcons.length === 1">{{ filterIcons.length }} icon</p>
+                <p v-else>{{ filterIcons.length }} icons</p>
+            </div>
+        </div>
+    </div>
+    <div class="content-area">
+        <div class="demo-icons" id="icons">
+            <div class="demo-icons-item" v-for="icon in filterIcons">            
+                <svg class="icon huge">
+                    <use v-bind:href="'swanix-icons.svg#' + icon.name"></use>
+                </svg>
+                <span v-cloak class="demo-icons-name">{{ icon.name }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar-right">
+        
+    </div>
+    <div class="footer">
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+<script src="assets/app.js"></script>
+
+   
+</body>
+</html>
